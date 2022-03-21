@@ -6,13 +6,9 @@ import numpy as np
 df = pd.read_csv('final.csv')
 df = df[df['soup'].notna()]
 
-count = CountVectorizer(stop_words='english')
-count_matrix = count.fit_transform(df['soup'])
 
-cosine_sim = cosine_similarity(count_matrix, count_matrix)
 
-df = df.reset_index()
-indices = pd.Series(df.index, index=df['title'])
+
 
 def get_recommendations(title):
     idx = indices[title]
